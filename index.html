@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Call Example</title>
+</head>
+<body>
+    <button id="apiButton">Call API</button>
+
+    <script>
+        document.getElementById('apiButton').addEventListener('click', callApi);
+
+        function callApi() {
+            fetch('http://51.20.56.16/test')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json(); // or response.text() if the response is not JSON
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    // Do something with the data
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
